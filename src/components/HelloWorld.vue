@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import axios from 'axios';
 import { ref } from 'vue'
-
+import type { UploadInstance } from 'element-plus'
 defineProps<{ msg: string }>()
 type Submit = () => void;
 type Decomposition = (e: any) => void;
@@ -39,6 +39,16 @@ const decomposition: Decomposition = (e) => {
 }
 
 
+// const uploadRef = ref<UploadInstance>()
+
+// const submitUpload = () => {
+
+//   const formData = new FormData();
+//   formData.append("name","你好");
+//   // formData.append("multipartFile",uploadRef.value?.fileList[0])
+//   uploadRef.value!.submit()
+// }
+
 
 </script>
 
@@ -47,7 +57,27 @@ const decomposition: Decomposition = (e) => {
     <!-- 文件上传 -->
     <input type="file" name="file" id="f" ref="file" @change="decomposition">
     <button type="button" @click="submit">上传文件</button>
+    <!-- <el-upload
+    ref="uploadRef"
+    class="upload-demo"
+    action="http://localhost:8080/test/upload"
+    name="multipartFile"
+    :auto-upload="false"
+  >
+    <template #trigger>
+      <el-button type="primary">select file</el-button>
+    </template>
 
+    <el-button class="ml-3" type="success" @click="submitUpload">
+      upload to server
+    </el-button>
+
+    <template #tip>
+      <div class="el-upload__tip">
+        jpg/png files with a size less than 500kb
+      </div>
+    </template>
+  </el-upload> -->
   </div>
 </template>
 
